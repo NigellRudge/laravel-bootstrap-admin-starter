@@ -15,8 +15,8 @@ class LanguageSeeder extends Seeder
     public function run()
     {
         DB::table('languages')->insert([
-            [ 'name' =>'English','code'=>'en', 'icon_name' =>'en-flag.gif'],
-            [ 'name' =>'Nederlands','code'=>'nl', 'icon_name' =>'ned-flag.gif']
+            [ 'name' =>'English','code'=>'en', 'icon_name' =>'en-flag.gif','trans_code' => 'english'],
+            [ 'name' =>'Nederlands','code'=>'nl', 'icon_name' =>'ned-flag.gif','trans_code' => 'dutch']
         ]);
     }
 }

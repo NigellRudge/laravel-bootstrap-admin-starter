@@ -11,4 +11,8 @@ return [
     'auth_logout_label' => 'Uitloggen',
     'confirm_label' => 'Bevestigen',
     'auth_logout_confirm_label' => 'Bent u zeker dat u wilt afmelden?',
+    'dutch' => 'Nederlands',
+    'english' => ' Engels',
+    'gender_male_label' => 'Man',
+    'gender_female_label' => 'Vrouw',
 ];

@@ -23,6 +23,5 @@ Route::post('/logout',[AuthController::class,'logout'])->name('logout');
 
 Route::group(['middleware' => ['custom_auth','language']],function(){
     Route::post('/changeLang', [AuthController::class,'changeLanguage'])->name('change_language');
-
     Route::get('',[DashboardController::class,'index'])->name('dashboard');
 });

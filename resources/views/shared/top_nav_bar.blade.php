@@ -4,14 +4,32 @@
     </button>
     <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown no-arrow">
-            <a class="nav-link dropdown-toggle" onclick="ChangeLang(event)" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <div class="d-flex flex-row" >
+{{--            <a class="nav-link dropdown-toggle" onclick="ChangeLang(event)" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                <div class="d-flex flex-row" >--}}
+{{--                    <span class="mr-2">--}}
+{{--                        <img src="{{Session::get('lang_icon')}}" width="28" height="20" alt="flag">--}}
+{{--                    </span>--}}
+{{--                    <span class="mr-2 d-none d-lg-inline font-weight-bold text-dark text-xl" >{{Session::get('lang_name')}}</span>--}}
+{{--                </div>--}}
+{{--            </a>--}}
+            <div class="nav-link btn-group d-flex flex-column justify-content-center">
+                <a class="text-decoration-none pointer dropdown-toggle d-flex flex-row align-items-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer">
+                    <div class="d-flex flex-row" >
                     <span class="mr-2">
                         <img src="{{Session::get('lang_icon')}}" width="28" height="20" alt="flag">
                     </span>
-                    <span class="mr-2 d-none d-lg-inline font-weight-bold text-dark text-xl" >{{Session::get('lang_name')}}</span>
+                        <span class="mr-2 d-none d-lg-inline font-weight-bold text-dark text-xl" >{{Session::get('lang_name')}}</span>
+                    </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                    @foreach(\Illuminate\Support\Facades\Session::get('other_langs') as $lang)
+                        <a class="dropdown-item" href="#"  onclick="ChangeLang({!! $lang->id !!})">
+                            <img src="{{asset('storage/' . $lang->icon_name)}}" width="25" height="20" alt="flag" class="mr-1" />
+                            {{trans('common.' . $lang->trans_code)}}
+                        </a>
+                    @endforeach
                 </div>
-            </a>
+            </div>
         </li>
         <div class="topbar-divider d-none d-sm-block"></div>
         @auth
@@ -33,3 +51,14 @@
     </ul>
 
 </nav>
+<form method="post" action="{{ route('change_language') }}" id="new_changeLangForm">
+    @csrf
+    <input type="hidden" name="language_id" id="new_language_id">
+</form>
+<script>
+    function ChangeLang(langId) {
+        $('#new_language_id').val(langId)
+        const form = $('#new_changeLangForm')
+        form.submit()
+    }
+</script>

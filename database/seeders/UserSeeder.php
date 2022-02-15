@@ -19,7 +19,8 @@ class UserSeeder extends Seeder
                 [ 'name' => 'Administrator',
                     'password' => bcrypt('Admin@123'),
                     'email' => 'admin@gmail.com',
-                    'language_id' => 1
+                    'language_id' => 1,
+                    'is_admin' => 'true'
                 ]
             ]);
     }

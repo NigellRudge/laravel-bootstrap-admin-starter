@@ -12,4 +12,8 @@ return [
     'auth_logout_label' => 'Logout',
     'confirm_label' => 'Confirm',
     'auth_logout_confirm_label' => 'Are you sure you want to logout?',
+    'dutch' => 'Dutch',
+    'english' => ' English',
+    'gender_male_label' => 'Male',
+    'gender_female_label' => 'Female',
 ];
